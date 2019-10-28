@@ -1,0 +1,108 @@
+---
+- name: Install the OpenStack repositories from CentOS
+  package:
+    name: "centos-release-openstack-{{ openstack_release }}"
+    state: present
+  when: openstack_repo == "centos"
+  tags:
+    - repo
+
+- name: Install the OpenStack repositories from RDO
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.file }}"
+    mode: 0644
+    owner: root
+    group: root
+  loop:
+    - file: "/etc/yum.repos.d/delorean-{{ openstack_release }}.repo"
+      url: "https://trunk.rdoproject.org/centos7-{{ openstack_release }}/current/delorean.repo"
+    - file: "/etc/yum.repos.d/delorean-deps-{{ openstack_release }}.repo"
+      url: "https://trunk.rdoproject.org/centos7-{{ openstack_release }}/delorean-deps.repo"
+  when: openstack_repo == "rdo"
+  tags:
+    - repo
+
+- name: Register Red Hat subscriptions
+  redhat_subscription:
+    state: present
+    username: "{{ rh_user }}"
+    password: "{{ rh_pass }}"
+    auto_attach: true
+  when: openstack_repo == "rhosp"
+  tags:
+    - repo
+
+- name: Install the OpenStack repositories from Red Hat
+  rhsm_repository:
+    name: "{{ item }}"
+  loop:
+    - rhel-7-server-rpms
+    - rhel-7-server-extras-rpms
+    - rhel-7-server-rh-common-rpms
+    - rhel-ha-for-rhel-7-server-rpms
+    - rhel-7-server-nfv-rpms
+    - rhel-7-server-rhceph-3-tools-rpms
+    - rhel-7-server-rhceph-3-mon-rpms
+    - rhel-7-server-rhceph-3-osd-rpms
+    - "rhel-7-server-openstack-{{ openstack_release }}-rpms"
+  when: openstack_repo == "rhosp"
+  tags:
+    - repo
+
+- name: Install TripleO packages
+  package:
+    name: "{{ tripleo_undercloud_packages }}"
+    state: present
+
+- name: Create the stack group
+  group:
+    name: stack
+    state: present
+
+- name: Create the stack user
+  user:
+    name: stack
+    group: stack
+    state: present
+
+- name: Create a sudo configuration file for the stack user
+  copy:
+    content: "stack ALL=(root) NOPASSWD:ALL"
+    dest: /etc/sudoers.d/stack
+    mode: 0440
+    owner: root
+    group: root
+
+- name: Copy sample Undercloud configuration
+  copy:
+    src: /usr/share/instack-undercloud/undercloud.conf.sample
+    dest: /home/stack/undercloud.conf
+    mode: 0600
+    owner: stack
+    group: stack
+    remote_src: True
+    force: False
+
+- name: Enable the fake/manual power management driver in Ironic
+  ini_file:
+    path: /home/stack/undercloud.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    # By default, the other drivers listed here (besides manual-management) are enabled.
+    value: "{{ item.value }}"
+  loop: "{{ tripleo_undercloud_config }}"
+
+- name: Install the Undercloud services (this can take up to 1 hour)
+  command: openstack undercloud install
+  become: true
+  become_user: stack
+  when: tripleo_undercloud_install == True
+
+- name: Download and upload images to Glance
+  include_tasks:
+    file: undercloud_glance.yml
+    apply:
+      become: true
+      become_user: stack
+  when: tripleo_undercloud_upload_images == True

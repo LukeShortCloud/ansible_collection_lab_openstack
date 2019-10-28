@@ -1,0 +1,47 @@
+---
+- name: Create the images directory
+  file:
+    path: /home/stack/images/
+    state: directory
+
+- name: Handle RHOSP Overcloud images
+  when: openstack_repo == "rhosp"
+  block:
+    - name: Download the Overcloud images
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - rhosp-director-images
+        - rhosp-director-images-ipa
+
+    - name: Extract the Overcloud images
+      unarchive:
+        src: "/usr/share/rhosp-director-images/{{ item }}.tar"
+        dest: /home/stack/images/
+      loop:
+        - "overcloud-full-latest-{{ openstack_release }}.0"
+        - "ironic-python-agent-latest-{{ openstack_release }}.0"
+
+- name: Handle RDO Overcloud images
+  when: openstack_repo != "rhosp"
+  block:
+    - name: Download the Overcloud images
+      get_url:
+        url: "{{ item }}"
+        dest: /home/stack/images/
+      loop:
+        - "https://images.rdoproject.org/{{ openstack_release }}/rdo_trunk/current-tripleo-rdo/ironic-python-agent.tar"
+        - "https://images.rdoproject.org/{{ openstack_release }}/rdo_trunk/current-tripleo-rdo/overcloud-full.tar"
+
+    - name: Extract the Overcloud images
+      unarchive:
+        src: "/home/stack/images/{{ item }}"
+        dest: /home/stack/images/
+        remote_src: true
+      loop:
+        - ironic-python-agent.tar
+        - overcloud-full.tar
+
+- name: Upload the image to Glance
+  shell: . /home/stack/stackrc && openstack overcloud image upload --image-path /home/stack/images/
