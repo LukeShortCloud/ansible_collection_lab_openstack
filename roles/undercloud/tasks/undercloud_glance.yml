@@ -5,7 +5,7 @@
     state: directory
 
 - name: Handle RHOSP Overcloud images
-  when: openstack_repo == "rhosp"
+  when: rdo_packages_openstack_repo == "rhosp"
   block:
     - name: Download the Overcloud images
       package:
@@ -20,19 +20,19 @@
         src: "/usr/share/rhosp-director-images/{{ item }}.tar"
         dest: /home/stack/images/
       loop:
-        - "overcloud-full-latest-{{ openstack_release }}.0"
-        - "ironic-python-agent-latest-{{ openstack_release }}.0"
+        - "overcloud-full-latest-{{ rdo_packages_openstack_release }}.0"
+        - "ironic-python-agent-latest-{{ rdo_packages_openstack_release }}.0"
 
 - name: Handle RDO Overcloud images
-  when: openstack_repo != "rhosp"
+  when: rdo_packages_openstack_repo != "rhosp"
   block:
     - name: Download the Overcloud images
       get_url:
         url: "{{ item }}"
         dest: /home/stack/images/
       loop:
-        - "https://images.rdoproject.org/{{ openstack_release }}/rdo_trunk/current-tripleo-rdo/ironic-python-agent.tar"
-        - "https://images.rdoproject.org/{{ openstack_release }}/rdo_trunk/current-tripleo-rdo/overcloud-full.tar"
+        - "https://images.rdoproject.org/{{ rdo_packages_openstack_release }}/rdo_trunk/current-tripleo-rdo/ironic-python-agent.tar"
+        - "https://images.rdoproject.org/{{ rdo_packages_openstack_release }}/rdo_trunk/current-tripleo-rdo/overcloud-full.tar"
 
     - name: Extract the Overcloud images
       unarchive:

@@ -1,6 +1,11 @@
 ---
 - name: Converge
   hosts: all
+  pre_tasks:
+    - name: "Include rdo_packages (dependency)"
+      include_role:
+        name: "../../../rdo_packages"
+
   tasks:
     - name: "Include undercloud"
       include_role:

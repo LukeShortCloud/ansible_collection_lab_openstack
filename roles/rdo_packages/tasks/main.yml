@@ -1,0 +1,51 @@
+---
+- name: Install the OpenStack repositories from CentOS
+  package:
+    name: "centos-release-openstack-{{ rdo_packages_openstack_release }}"
+    state: present
+  when: rdo_packages_openstack_repo == "centos"
+  tags:
+    - repo
+
+- name: Install the OpenStack repositories from RDO
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.file }}"
+    mode: 0644
+    owner: root
+    group: root
+  loop:
+    - file: "/etc/yum.repos.d/delorean-{{ rdo_packages_openstack_release }}.repo"
+      url: "https://trunk.rdoproject.org/centos7-{{ rdo_packages_openstack_release }}/current/delorean.repo"
+    - file: "/etc/yum.repos.d/delorean-deps-{{ rdo_packages_openstack_release }}.repo"
+      url: "https://trunk.rdoproject.org/centos7-{{ rdo_packages_openstack_release }}/delorean-deps.repo"
+  when: rdo_packages_openstack_repo == "rdo"
+  tags:
+    - repo
+
+- name: Register Red Hat subscriptions
+  redhat_subscription:
+    state: present
+    username: "{{ rdo_packages_rh_user }}"
+    password: "{{ rdo_packages_rh_pass }}"
+    auto_attach: true
+  when: rdo_packages_openstack_repo == "rhosp"
+  tags:
+    - repo
+
+- name: Install the OpenStack repositories from Red Hat
+  rhsm_repository:
+    name: "{{ item }}"
+  loop:
+    - rhel-7-server-rpms
+    - rhel-7-server-extras-rpms
+    - rhel-7-server-rh-common-rpms
+    - rhel-ha-for-rhel-7-server-rpms
+    - rhel-7-server-nfv-rpms
+    - rhel-7-server-rhceph-3-tools-rpms
+    - rhel-7-server-rhceph-3-mon-rpms
+    - rhel-7-server-rhceph-3-osd-rpms
+    - "rhel-7-server-openstack-{{ rdo_packages_openstack_release }}-rpms"
+  when: rdo_packages_openstack_repo == "rhosp"
+  tags:
+    - repo
