@@ -97,7 +97,7 @@
   command: openstack undercloud install
   become: true
   become_user: stack
-  when: tripleo_undercloud_install == True
+  when: tripleo_undercloud_install
 
 - name: Download and upload images to Glance
   include_tasks:
@@ -105,4 +105,4 @@
     apply:
       become: true
       become_user: stack
-  when: tripleo_undercloud_upload_images == True
+  when: tripleo_undercloud_upload_images

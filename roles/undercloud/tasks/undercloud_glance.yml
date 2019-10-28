@@ -44,4 +44,7 @@
         - overcloud-full.tar
 
 - name: Upload the image to Glance
-  shell: . /home/stack/stackrc && openstack overcloud image upload --image-path /home/stack/images/
+  shell: . /home/stack/stackrc && openstack overcloud image upload --image-path /home/stack/images/a
+  # TODO(ekultails): Run a glance command first to see if the images even need to be uploaded.
+  tags:
+    - skip_ansible_lint
