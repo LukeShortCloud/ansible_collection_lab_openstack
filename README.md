@@ -1,2 +1,3 @@
-# ansible_collection_lab_openstack
-An Ansible Collection for managing OpenStack on OpenStack labs.
+# Ansible Collection - ekultails.ansible_collection_lab_openstack
+
+Documentation for the collection.
