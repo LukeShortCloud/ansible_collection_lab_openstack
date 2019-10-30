@@ -1,0 +1,15 @@
+openstack overcloud deploy --templates ~/templates \
+{% if tht_predeployed %}
+    -e  ~/templates/environments/deployed-server-environment.yaml \
+    -e ~/templates/environments/deployed-server-bootstrap-environment-rhel.yaml \
+    -e ~/templates/environments/deployed-server-pacemaker-environment.yaml \
+    -e ~/predeployed.yml \
+    --disable-validations  \
+{% endif %}
+{% if tht_release == "queens" %}
+    --config-download \
+    -e ~/templates/environments/config-download-environment.yaml \
+{% endif %}
+    --overcloud-ssh-user cloud-user \
+    --overcloud-ssh-key /home/stack/.ssh/id_rsa \
+    -r ~/roles_data_{{ tht_release }}.yml

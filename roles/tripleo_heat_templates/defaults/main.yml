@@ -1,0 +1,7 @@
+---
+# defaults file for tripleo_heat_templates
+tht_save_dir: /tmp/tripleo_heat_templates
+tht_release: queens
+tht_roles_data_minimal: true
+tht_roles_data_storage: true
+tht_predeployed: true
