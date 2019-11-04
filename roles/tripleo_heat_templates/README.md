@@ -15,6 +15,8 @@ None.
 - tht_predeployed = Generate predeployed server template. Default: `true`.
 - tht_controller_nodes = A list of dictionaries describing the `hostname` and `address` to be used for predeployed nodes.
 - tht_compute_nodes
+- tht_dns_servers = A list of DNS servers to use for the Overcloud.
+- tht_ntp_servers = A list of NTP servers to use for the Overcloud.
 
 ## Dependencies
 

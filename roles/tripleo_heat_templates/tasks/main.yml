@@ -10,11 +10,16 @@
     src: "roles_data.yml.j2"
     dest: "{{ tht_save_dir }}/roles_data.yml"
 
-- name: Generate the predeployed THT file
+- name: Generate the predeployed THT settings file
   template:
     src: predeployed.yml.j2
     dest: "{{ tht_save_dir }}/predeployed.yml"
   when: tht_predeployed
+
+- name: Generate the common THT settings file
+  template:
+    src: common.yml.j2
+    dest: "{{ tht_save_dir }}/common.yml"
 
 - name: Generate the Overcloud deploy script
   template:

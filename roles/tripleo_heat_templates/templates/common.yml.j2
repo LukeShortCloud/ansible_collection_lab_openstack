@@ -1,0 +1,10 @@
+---
+parameter_defaults:
+   DnsServers:
+{% for item in tht_dns_servers %}
+     - {{ item }}
+{% endfor %}
+   NtpServer:
+{% for item in tht_ntp_servers %}
+     - {{ item }}
+{% endfor %}
