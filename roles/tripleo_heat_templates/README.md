@@ -8,7 +8,7 @@ None.
 
 ## Role Variables
 
-- tht_save_dir = The directory to save the templates to. Default: `/tmp/tripleo_heat_templates`.
+- tht_save_dir = The directory to save the templates to. Default: `/tmp/tht_custom`.
 - tht_release = The OpenStack release to target. `queens` or `train`. Default: `queens`.
 - tht_roles_data_minimal = Generate a minimal roles_data.yml file. Default: `true`.
 - tht_roles_data_storage = Enable storage related roles. Default: `true`.

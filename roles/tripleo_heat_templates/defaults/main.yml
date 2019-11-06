@@ -1,13 +1,13 @@
 ---
 # defaults file for tripleo_heat_templates
-tht_save_dir: /tmp/tripleo_heat_templates
+tht_save_dir: /tmp/tht_custom
 tht_release: queens
 tht_roles_data_minimal: true
 tht_roles_data_storage: true
 tht_predeployed: true
 tht_dns_servers:
-  - 10.5.30.160$
-  - 10.11.5.19$
+  - 10.5.30.160
+  - 10.11.5.19
 tht_ntp_servers:
   - clock.redhat.com
   - clock2.redhat.com
