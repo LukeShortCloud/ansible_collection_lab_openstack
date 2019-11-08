@@ -51,6 +51,7 @@
   update_serial: 1
   ServicesDefault:
 {% if tht_release == "queens" %}
+    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::GlanceRegistry
     - OS::TripleO::Services::NeutronLbaasv2Agent
     - OS::TripleO::Services::NeutronLbaasv2Api
@@ -77,7 +78,6 @@
     - OS::TripleO::Services::CinderScheduler
     - OS::TripleO::Services::CinderVolume
     - OS::TripleO::Services::Clustercheck
-    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::GlanceApi
     - OS::TripleO::Services::HAproxy
     - OS::TripleO::Services::HeatApi
@@ -269,6 +269,7 @@
   update_serial: 25
   ServicesDefault:
 {% if tht_release == "queens" %}
+    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::Ntp
     - OS::TripleO::Services::Ptp
 {% elif tht_release == "train" %}
@@ -284,7 +285,6 @@
     - OS::TripleO::Services::ComputeNeutronL3Agent
     - OS::TripleO::Services::ComputeNeutronMetadataAgent
     - OS::TripleO::Services::ComputeNeutronOvsAgent
-    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::Iscsid
     - OS::TripleO::Services::Kernel
     - OS::TripleO::Services::LoginDefs
@@ -357,6 +357,7 @@
   update_serial: 25
   ServicesDefault:
     {% if tht_release == "queens" %}
+    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::Ntp
     - OS::TripleO::Services::Ptp
     {% elif tht_release == "train" %}
@@ -369,7 +370,6 @@
     - OS::TripleO::Services::CACerts
     - OS::TripleO::Services::CertmongerUser
     - OS::TripleO::Services::CinderBackendVRTSHyperScale
-    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::Iscsid
     - OS::TripleO::Services::Kernel
     - OS::TripleO::Services::LoginDefs
@@ -435,6 +435,7 @@
   update_serial: 1
   ServicesDefault:
     {% if tht_release == "queens" %}
+    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::Ntp
     - OS::TripleO::Services::Ptp
     {% elif tht_release == "train" %}
@@ -445,7 +446,6 @@
     {% endif %}
     - OS::TripleO::Services::CACerts
     - OS::TripleO::Services::CertmongerUser
-    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::IpaClient
     - OS::TripleO::Services::Ipsec
     - OS::TripleO::Services::Kernel
@@ -500,6 +500,7 @@
   update_serial: 1
   ServicesDefault:
     {% if tht_release == "queens" %}
+    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::Ntp
     - OS::TripleO::Services::Ptp
     {% elif tht_release == "train" %}
@@ -511,7 +512,6 @@
     - OS::TripleO::Services::CACerts
     - OS::TripleO::Services::CephOSD
     - OS::TripleO::Services::CertmongerUser
-    - OS::TripleO::Services::Docker
     - OS::TripleO::Services::IpaClient
     - OS::TripleO::Services::Ipsec
     - OS::TripleO::Services::Kernel
