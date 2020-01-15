@@ -1,8 +1,16 @@
 ---
 undercloud_install: false
 undercloud_upload_images: false
+undercloud_nameservers: "10.5.30.160,10.11.5.19"
+undercloud_ntp_servers: "clock.redhat.com,clock2.redhat.com"
 undercloud_config:
   - section: DEFAULT
     option: enabled_hardware_types
     # By default, the other drivers listed here (besides manual-management) are enabled.
     value: ipmi,redfish,ilo,idrac,manual-management
+  - section: DEFAULT
+    option: undercloud_nameservers
+    value: "{{ undercloud_nameservers }}"
+  - section: DEFAULT
+    option: undercloud_ntp_servers
+    value: "{{ undercloud_ntp_servers }}"
