@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include rdo_packages"
+      include_role:
+        name: "rdo_packages"
