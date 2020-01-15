@@ -25,7 +25,9 @@ Upstream:
 ---
 - hosts: undercloud
   roles:
-    - rdo_packages
+    - name: rdo_packages
+      vars:
+        rdo_packages_openstack_release: master
 ```
 
 Downstream:
