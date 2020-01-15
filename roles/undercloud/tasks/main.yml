@@ -23,9 +23,24 @@
     owner: root
     group: root
 
+- name: Stat the /usr/share/instack-undercloud/undercloud.conf.sample file
+  stat:
+    path: /usr/share/instack-undercloud/undercloud.conf.sample
+  register: undercloud_instack_conf
+
+- name: Set /usr/share/instack-undercloud as the configuration path
+  set_fact:
+    undercloud_conf_sample_path: /usr/share/instack-undercloud
+  when: undercloud_instack_conf.stat.exists
+
+- name: Set /usr/share/python-tripleoclient as the configuration path
+  set_fact:
+    undercloud_conf_sample_path: /usr/share/python-tripleoclient
+  when: not undercloud_instack_conf.stat.exists
+
 - name: Copy sample Undercloud configuration
   copy:
-    src: /usr/share/instack-undercloud/undercloud.conf.sample
+    src: "{{ undercloud_conf_sample_path }}/undercloud.conf.sample"
     dest: /home/stack/undercloud.conf
     mode: 0600
     owner: stack
