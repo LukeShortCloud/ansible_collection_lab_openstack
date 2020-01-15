@@ -12,9 +12,11 @@ None.
 
 ## Role Variables
 
-* undercloud_install = If the "openstack undercloud install" command should be executed. Default: `false`.
-* undercloud_upload_images = If the Overcloud kernel, initramfs, and QCOW2 image should be automatically downloaded and uploaded to Glance. Default: `false`.
-* undercloud_config = Custom configurations for the Undercloud.
+* undercloud_install (boolean) = If the "openstack undercloud install" command should be executed.
+* undercloud_upload_images (boolean) = If the Overcloud kernel, initramfs, and QCOW2 image should be automatically downloaded and uploaded to Glance.
+* undercloud_config (dictionary) = Custom configurations for the Undercloud.
+* undercloud_nameservers (string) = A comma-separated list of DNS resolvers.
+* undercloud_ntp_servers (string) = A comma-separated list of NTP servers.
 
 ## Example Playbook
 

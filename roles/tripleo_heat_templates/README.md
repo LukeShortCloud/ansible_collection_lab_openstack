@@ -8,15 +8,15 @@ None.
 
 ## Role Variables
 
-- tht_save_dir = The directory to save the templates to. Default: `/tmp/tht_custom`.
-- tht_release = The OpenStack release to target. `queens` or `train`. Default: `queens`.
-- tht_roles_data_minimal = Generate a minimal roles_data.yml file. Default: `true`.
-- tht_roles_data_storage = Enable storage related roles. Default: `true`.
-- tht_predeployed = Generate predeployed server template. Default: `true`.
-- tht_controller_nodes = A list of dictionaries describing the `hostname` and `address` to be used for predeployed nodes.
-- tht_compute_nodes
-- tht_dns_servers = A list of DNS servers to use for the Overcloud.
-- tht_ntp_servers = A list of NTP servers to use for the Overcloud.
+* tht_save_dir (string) = The directory to save the templates to.
+* tht_release (string) = The OpenStack release to target. `queens` or `train`.
+* tht_roles_data_minimal (boolean) = Generate a minimal roles_data.yml file.
+* tht_roles_data_storage (boolean) = Enable storage related roles.
+* tht_predeployed (boolean) = Generate predeployed server template.
+* tht_controller_nodes (dictionary) = A list of dictionaries describing the `hostname` and `address` to be used for predeployed nodes.
+* tht_compute_nodes (dictionary)
+* tht_dns_servers (list) = A list of DNS servers to use for the Overcloud.
+* tht_ntp_servers (list) = A list of NTP servers to use for the Overcloud.
 
 ## Dependencies
 
