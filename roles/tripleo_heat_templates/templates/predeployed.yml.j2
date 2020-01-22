@@ -5,8 +5,11 @@ resource_registry:
 parameter_defaults:
   NeutronPublicInterface: nic2
   HypervisorNeutronPublicInterface: nic2
-  ControlPlaneDefaultRoute: 192.168.24.1
-  EC2MetadataIp: 192.168.24.1
+  ControlPlaneDefaultRoute: {{ tht_ctlplane_route }}
+  ControlPlaneSubnetCidr: {{ tht_ctlplane_cidr }}
+{% if tht_release == "queens" %}
+  EC2MetadataIp: {{ tht_ctlplane_route }}
+{% endif %}
   DeployedServerPortMap:
 {% for item in tht_controller_nodes %}
     {{ item.hostname }}-ctlplane:
