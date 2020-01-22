@@ -1,6 +1,6 @@
 ---
 # tasks file for tripleo_heat_templates
-- name: Create the tempalte directory
+- name: Create the template directory
   file:
     path: "{{ tht_save_dir }}"
     state: directory

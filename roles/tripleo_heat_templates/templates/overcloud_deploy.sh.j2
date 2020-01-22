@@ -1,10 +1,14 @@
 openstack overcloud deploy --templates ~/templates \
 {% if tht_predeployed %}
     -e  ~/templates/environments/deployed-server-environment.yaml \
+    {% if ansible_distribution == 'Red Hat Enterprise Linux' %}
     -e ~/templates/environments/deployed-server-bootstrap-environment-rhel.yaml \
     -e ~/templates/environments/deployed-server-pacemaker-environment.yaml \
+    {% else %}
+    -e ~/templates/environments/deployed-server-bootstrap-environment-centos.yaml \
+    {% endif %}
     -e ~/tht_custom/predeployed.yml \
-    --disable-validations  \
+    --disable-validations \
 {% endif %}
 {% if tht_release == "queens" %}
     --config-download \
