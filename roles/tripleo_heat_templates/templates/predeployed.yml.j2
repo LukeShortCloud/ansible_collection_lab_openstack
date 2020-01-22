@@ -30,5 +30,5 @@ parameter_defaults:
     overcloud-controller-{{ loop.index0 }}: {{ item.hostname }}
 {% endfor %}
 {% for item in tht_compute_nodes %}
-    overcloud-compute-{{ loop.index0 }}: {{ item.hostname }}
+    overcloud-novacompute-{{ loop.index0 }}: {{ item.hostname }}
 {% endfor %}
