@@ -17,6 +17,7 @@ None.
 * tht_compute_nodes (dictionary)
 * tht_dns_servers (list) = A list of DNS servers to use for the Overcloud.
 * tht_ntp_servers (list) = A list of NTP servers to use for the Overcloud.
+* tht_low_memory (boolean) = Enable the low-memory-usage environment file.
 
 ## Dependencies
 

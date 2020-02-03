@@ -13,3 +13,4 @@ tht_ntp_servers:
   - clock2.redhat.com
 tht_ctlplane_route: 192.168.24.1
 tht_ctlplane_cidr: 24
+tht_low_memory: true
