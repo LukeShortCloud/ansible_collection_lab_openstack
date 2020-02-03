@@ -1,8 +1,8 @@
 ---
 resource_registry:
   OS::TripleO::DeployedServer::ControlPlanePort: /usr/share/openstack-tripleo-heat-templates/deployed-server/deployed-neutron-port.yaml
-  OS::TripleO::Controller::Net::SoftwareConfig: ../templates/net-config-static-bridge.yaml
-  OS::TripleO::Compute::Net::SoftwareConfig: ../templates/net-config-static-bridge.yaml
+  OS::TripleO::ControllerDeployedServer::Net::SoftwareConfig: ../templates/net-config-static-bridge.yaml
+  OS::TripleO::ComputeDeployedServer::Net::SoftwareConfig: ../templates/net-config-static-bridge.yaml
 
 parameter_defaults:
   NeutronPublicInterface: nic2
