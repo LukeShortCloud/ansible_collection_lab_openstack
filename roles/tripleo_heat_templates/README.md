@@ -18,6 +18,7 @@ None.
 * tht_dns_servers (list) = A list of DNS servers to use for the Overcloud.
 * tht_ntp_servers (list) = A list of NTP servers to use for the Overcloud.
 * tht_low_memory (boolean) = Enable the low-memory-usage environment file.
+* tht_ctlplane_network_cidr (string) = The full network CIDR for the control plane.
 
 ## Dependencies
 

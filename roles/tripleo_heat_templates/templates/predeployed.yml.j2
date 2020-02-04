@@ -8,7 +8,6 @@ parameter_defaults:
   NeutronPublicInterface: nic2
   HypervisorNeutronPublicInterface: nic2
   ControlPlaneDefaultRoute: {{ tht_ctlplane_route }}
-  ControlPlaneSubnetCidr: {{ tht_ctlplane_cidr }}
 {% if tht_release == "queens" %}
   EC2MetadataIp: {{ tht_ctlplane_route }}
 {% endif %}
@@ -18,14 +17,20 @@ parameter_defaults:
       fixed_ips:
         - ip_address: {{ item.address }}
       subnets:
-        - cidr: 24
+        - cidr: {{ tht_ctlplane_network_cidr }}
+      network:
+        tags:
+          - {{ tht_ctlplane_network_cidr }}
 {% endfor %}
 {% for item in tht_compute_nodes %}
     {{ item.hostname }}-ctlplane:
       fixed_ips:
         - ip_address: {{ item.address }}
       subnets:
-        - cidr: 24
+        - cidr: {{ tht_ctlplane_network_cidr }}
+      network:
+        tags:
+          - {{ tht_ctlplane_network_cidr }}
 {% endfor %}
   HostnameMap:
 {% for item in tht_controller_nodes %}
