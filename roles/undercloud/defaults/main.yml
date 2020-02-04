@@ -3,6 +3,8 @@ undercloud_install: false
 undercloud_upload_images: false
 undercloud_nameservers: "10.5.30.160,10.11.5.19"
 undercloud_ntp_servers: "clock.redhat.com,clock2.redhat.com"
+undercloud_enable_cert: false
+undercloud_public_host: 192.168.24.2
 undercloud_config:
   - section: DEFAULT
     option: enabled_hardware_types

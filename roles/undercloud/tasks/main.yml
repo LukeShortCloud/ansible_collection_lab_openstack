@@ -53,9 +53,13 @@
     path: /home/stack/undercloud.conf
     section: "{{ item.section }}"
     option: "{{ item.option }}"
-    # By default, the other drivers listed here (besides manual-management) are enabled.
     value: "{{ item.value }}"
   loop: "{{ undercloud_config }}"
+
+- name: Include certificate tasks
+  include_tasks:
+    file: cert.yml
+  when: undercloud_enable_cert
 
 - name: Install the Undercloud services (this can take up to 1 hour)
   command: openstack undercloud install

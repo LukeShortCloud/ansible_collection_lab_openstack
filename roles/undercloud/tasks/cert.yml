@@ -1,0 +1,22 @@
+---
+- name: Copy the hieradata file
+  copy:
+    src: hiera_public_endpoint.yml
+    dest: /home/stack/
+
+- name: Enable the public endpoint values in the Undercloud configuration
+  ini_file:
+    path: /home/stack/undercloud.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  loop:
+    - section: DEFAULT
+      option: generate_service_certificate
+      value: "true"
+    - section: DEFAULT
+      option: hieradata_override
+      value: /home/stack/hiera_public_endpoint.yml
+    - section: DEFAULT
+      option: undercloud_public_host
+      value: "{{ undercloud_public_host }}"

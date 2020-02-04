@@ -17,6 +17,8 @@ None.
 * undercloud_config (dictionary) = Custom configurations for the Undercloud.
 * undercloud_nameservers (string) = A comma-separated list of DNS resolvers.
 * undercloud_ntp_servers (string) = A comma-separated list of NTP servers.
+* undercloud_enable_cert (boolean) = Enable the generation of a self-signed certificate.
+* undercloud_public_host (string) = The IP address or hostname that the certificate should bind to.
 
 ## Example Playbook
 
