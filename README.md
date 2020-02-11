@@ -1,5 +1,17 @@
 # Ansible Collection - ekultails.ansible_collection_lab_openstack
 
+This projects provides a collection of Ansible content for helping to set up an OpenStack cloud using RDO packages. For more roles specific to TripleO, consider using the official [tripleo-operator-ansible collection](https://opendev.org/openstack/tripleo-operator-ansible).
+
+
+## Install
+
+```sh
+ansible-galaxy collection build --force
+ansible-galaxy collection install --force ekultails-ansible_collection_lab_openstack-*.tar.gz
+```
+
+Roles are available using the namespace `ekultails.ansible_collection_lab_openstack.<ROLE_NAME>`.
+
 
 ## Supported Environments
 
