@@ -39,8 +39,10 @@ Install the Undercloud and fully configure it:
   roles:
     - name: undercloud
       vars:
-        tripleo_undercloud_install: true
-        tripleo_undercloud_upload_images: true
+        undercloud_install: true
+        undercloud_upload_images: true
+        undercloud_nameservers: "8.8.8.8,8.4.4.8"
+        undercloud_ntp_servers: "0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org"
 ```
 
 ## License
