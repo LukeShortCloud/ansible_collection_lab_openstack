@@ -14,3 +14,4 @@ tht_ntp_servers:
 tht_ctlplane_route: 192.168.24.1
 tht_low_memory: true
 tht_ctlplane_network_cidr: 192.168.24.0/24
+tht_distro: centos

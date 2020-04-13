@@ -19,6 +19,7 @@ None.
 * tht_ntp_servers (list) = A list of NTP servers to use for the Overcloud.
 * tht_low_memory (boolean) = Enable the low-memory-usage environment file.
 * tht_ctlplane_network_cidr (string) = The full network CIDR for the control plane.
+* tht_distro (string) = The EL distribution the templates should be generated for. `centos` or `rhel`.
 
 ## Dependencies
 

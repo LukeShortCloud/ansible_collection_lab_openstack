@@ -4,7 +4,7 @@ openstack overcloud deploy --templates ~/templates \
 {% endif %}
 {% if tht_predeployed %}
     -e  ~/templates/environments/deployed-server-environment.yaml \
-    {% if ansible_distribution == 'Red Hat Enterprise Linux' %}
+    {% if tht_distro == 'rhel' %}
     -e ~/templates/environments/deployed-server-bootstrap-environment-rhel.yaml \
     -e ~/templates/environments/deployed-server-pacemaker-environment.yaml \
     {% else %}
