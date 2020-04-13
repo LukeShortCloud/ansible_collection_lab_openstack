@@ -1,3 +1,4 @@
+. ~/stackrc
 openstack overcloud deploy --templates ~/templates \
 {% if tht_low_memory %}
     -e ~/templates/environments/low-memory-usage.yaml \
@@ -20,4 +21,4 @@ openstack overcloud deploy --templates ~/templates \
     --overcloud-ssh-user cloud-user \
     --overcloud-ssh-key /home/stack/.ssh/id_rsa \
     -e ~/tht_custom/common.yml \
-    -r ~/tht_custom/roles_data.yml
+    -r ~/tht_custom/roles_data.yml 2> /dev/stdout | tee -a ~/overcloud_deploy.log-$(date +%Y-%m-%d_%H:%M:%S)
