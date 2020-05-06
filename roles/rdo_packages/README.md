@@ -14,6 +14,7 @@ None.
 
 * rdo_packages_openstack_release (string) = The OpenStack release to setup on the Undercloud. For upstream packages, this should be the release name. For downstream packages, this should be the RHOSP version.
 * rdo_packages_openstack_repo (string) = The OpenStack RPM repository to use: `centos`, `rdo`, or `rhosp`.
+* rdo_packages_rdo_branch (string) = The RDO branch to use: `consistent`, `current`, `current-tripleo`, or `current-triple-rdo` (default).
 * rdo_packages_rh_user (string) = Username for Red Hat subscriptions.
 * rdo_packages_rh_pass (string) = Password for Red Hat subscriptions.
 
@@ -28,6 +29,7 @@ Upstream:
     - name: rdo_packages
       vars:
         rdo_packages_openstack_release: master
+        rdo_packages_rdo_branch: current
 ```
 
 Downstream:
