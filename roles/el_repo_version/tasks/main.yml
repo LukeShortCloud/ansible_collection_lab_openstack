@@ -13,9 +13,11 @@
   loop: "{{ el_repo_version_repos }}"
 
 - name: Enable CentOS Vault repositories
-  ini_file:
-    dest: "{{ el_repo_version_repo_file_vault }}"
-    section: "C{{ el_repo_version }}-{{ item }}"
-    option: enabled
-    value: 1
+  yum_repository:
+    name: "C{{ el_repo_version }}-{{ item }}"
+    description: "CentOS Vault repository for {{ el_repo_version }}"
+    file: "{{ el_repo_version_repo_file_name_vault }}"
+    baseurl: "http://vault.centos.org/{{ el_repo_version }}/{{ item }}/$basearch/"
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
   loop: "{{ el_repo_version_repos }}"
