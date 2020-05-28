@@ -16,6 +16,12 @@
     dest: "{{ tht_save_dir }}/predeployed.yml"
   when: tht_predeployed
 
+- name: Generate the predeployed THT settings file
+  template:
+    src: enable-swap.yaml.j2
+    dest: "{{ tht_save_dir }}/enable-swap.yaml"
+  when: tht_swap
+
 - name: Generate the common THT settings file
   template:
     src: common.yml.j2

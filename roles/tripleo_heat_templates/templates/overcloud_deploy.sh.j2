@@ -3,6 +3,9 @@ openstack overcloud deploy --templates ~/templates \
 {% if tht_low_memory %}
     -e ~/templates/environments/low-memory-usage.yaml \
 {% endif %}
+{% if tht_swap %}
+    -e ~/tht_custom/enable-swap.yaml \
+{% endif %}
 {% if tht_predeployed %}
     -e  ~/templates/environments/deployed-server-environment.yaml \
     {% if tht_distro == 'rhel' %}
