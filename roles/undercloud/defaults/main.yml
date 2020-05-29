@@ -5,6 +5,7 @@ undercloud_nameservers: "10.5.30.160,10.11.5.19"
 undercloud_ntp_servers: "clock.redhat.com,clock2.redhat.com"
 undercloud_enable_cert: false
 undercloud_public_host: 192.168.24.2
+undercloud_masquerade: true
 undercloud_config:
   - section: DEFAULT
     option: enabled_hardware_types
@@ -16,3 +17,6 @@ undercloud_config:
   - section: DEFAULT
     option: undercloud_ntp_servers
     value: "{{ undercloud_ntp_servers }}"
+  - section: ctlplane-subnet
+    option: masquerade
+    value: "{{ undercloud_masquerade }}"
