@@ -27,6 +27,11 @@
     src: common.yml.j2
     dest: "{{ tht_save_dir }}/common.yml"
 
+- name: Copy the custom net-config layout over
+  copy:
+    src: net-config-nic1-public-nic2-ctlplane.yaml
+    dest: "{{ tht_save_dir }}/"
+
 - name: Generate the Overcloud deploy script
   template:
     src: overcloud_deploy.sh.j2
