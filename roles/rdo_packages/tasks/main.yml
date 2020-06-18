@@ -16,9 +16,9 @@
     group: root
   loop:
     - file: "/etc/yum.repos.d/delorean-{{ rdo_packages_openstack_release }}.repo"
-      url: "https://trunk.rdoproject.org/centos7-{{ rdo_packages_openstack_release }}/{{ rdo_packages_rdo_branch }}/delorean.repo"
+      url: "https://trunk.rdoproject.org/centos{{ rdo_packages_centos_version }}-{{ rdo_packages_openstack_release }}/{{ rdo_packages_rdo_branch }}/delorean.repo"
     - file: "/etc/yum.repos.d/delorean-deps-{{ rdo_packages_openstack_release }}.repo"
-      url: "https://trunk.rdoproject.org/centos7-{{ rdo_packages_openstack_release }}/delorean-deps.repo"
+      url: "https://trunk.rdoproject.org/centos{{ rdo_packages_centos_version }}-{{ rdo_packages_openstack_release }}/delorean-deps.repo"
   when: rdo_packages_openstack_repo == "rdo"
   tags:
     - repo
