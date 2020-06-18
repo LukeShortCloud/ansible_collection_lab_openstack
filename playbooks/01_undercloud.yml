@@ -2,6 +2,6 @@
 - name: Setup the Undercloud
   hosts: undercloud
   roles:
-    - name: ekultails.ansible_collection_lab_openstack.undercloud
+    - name: ekultails.lab_openstack.undercloud
       vars:
         undercloud_install: true

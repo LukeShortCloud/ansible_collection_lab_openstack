@@ -2,7 +2,7 @@
 - name: Setup OpenStack package repositories
   hosts: undercloud,overcloud
   roles:
-    - name: ekultails.ansible_collection_lab_openstack.rdo_packages
+    - name: ekultails.lab_openstack.rdo_packages
       vars:
         rdo_packages_openstack_repo: rdo
         rdo_packages_openstack_release: master
