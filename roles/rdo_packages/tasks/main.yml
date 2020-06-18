@@ -33,7 +33,7 @@
   tags:
     - repo
 
-- name: Install the OpenStack repositories from Red Hat
+- name: Install the OpenStack repositories from Red Hat (RHOSP < 15)
   rhsm_repository:
     name: "{{ item }}"
   loop:
@@ -46,6 +46,41 @@
     - rhel-7-server-rhceph-3-mon-rpms
     - rhel-7-server-rhceph-3-osd-rpms
     - "rhel-7-server-openstack-{{ rdo_packages_openstack_release }}-rpms"
-  when: rdo_packages_openstack_repo == "rhosp"
+  when:
+    - rdo_packages_openstack_repo == "rhosp"
+    - rdo_packages_openstack_release < 15
   tags:
     - repo
+
+- name: Install the OpenStack repositories from Red Hat (RHOSP >= 15)
+  rhsm_repository:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - rhel-8-for-x86_64-baseos-eus-rpms
+    - rhel-8-for-x86_64-appstream-rpms
+    - rhel-8-for-x86_64-highavailability-eus-rpms
+    - "openstack-{{ rdo_packages_openstack_release }}-for-rhel-8-x86_64-rpms"
+    - fast-datapath-for-rhel-8-x86_64-rpms
+  when:
+    - rdo_packages_openstack_repo == "rhosp"
+    - rdo_packages_openstack_release >= 15
+  tags:
+    - repo
+
+- name: Run RHOSP 15/16 specific tasks
+  when:
+    - rdo_packages_openstack_repo == "rhosp"
+    - (rdo_packages_openstack_release == 15) or (rdo_packages_openstack_release == 16)
+  block:
+    - name: Pin RHEL packages to the 8.1 release
+      redhat_subscription:
+        username: "{{ rh_user }}"
+        password: "{{ rh_pass }}"
+        release: 8.1
+        state: present
+
+    - name: Install the Ansible repository for RHOSP 16
+      rhsm_repository:
+        name: ansible-2.8-for-rhel-8-x86_64-rpms
+        state: present

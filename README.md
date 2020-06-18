@@ -16,7 +16,7 @@ Roles are available using the namespace `ekultails.ansible_collection_lab_openst
 ## Supported Environments
 
 * TripleO Queens, Rocky, Stein, and Train
-* RHOSP 13 and 14
+* RHOSP 13, 14, 15, and 16
 
 
 ## Roles

@@ -17,6 +17,8 @@ None.
 * rdo_packages_rdo_branch (string) = The RDO branch to use: `consistent`, `current`, `current-tripleo`, or `current-triple-rdo` (default).
 * rdo_packages_rh_user (string) = Username for Red Hat subscriptions.
 * rdo_packages_rh_pass (string) = Password for Red Hat subscriptions.
+* rh_user (string) = The Red Hat user for subscription-manager.
+* rh_pass (string) = The Red Hat user's password for subscription-manager.
 
 ## Example Playbook
 
