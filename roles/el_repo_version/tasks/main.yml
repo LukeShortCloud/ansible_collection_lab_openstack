@@ -17,7 +17,7 @@
     name: "C{{ el_repo_version }}-{{ item.name }}"
     description: "CentOS Vault repository for {{ el_repo_version }}"
     file: "{{ item.file }}"
-    baseurl: "http://vault.centos.org/{{ el_repo_version }}/{{ item.name }}/$basearch/"
+    baseurl: "http://vault.centos.org/{{ el_repo_version }}/{{ item.dir_name | default(item.name) }}/$basearch/"
     gpgcheck: true
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
   loop: "{{ el_repo_version_repos }}"
