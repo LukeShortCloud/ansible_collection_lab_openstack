@@ -1,0 +1,4 @@
+---
+- import_playbook: 00_rdo_packages.yml
+- import_playbook: 01_undercloud.yml
+- import_playbook: 02_tripleo_heat_templates.yml
