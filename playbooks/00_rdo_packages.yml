@@ -3,9 +3,6 @@
   hosts: undercloud,overcloud
   roles:
     - name: ekultails.lab_openstack.rdo_packages
-      vars:
-        rdo_packages_openstack_repo: rdo
-        rdo_packages_openstack_release: master
 
   post_tasks:
     - name: Update all system packages

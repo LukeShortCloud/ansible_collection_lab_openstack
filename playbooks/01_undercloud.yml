@@ -3,5 +3,3 @@
   hosts: undercloud
   roles:
     - name: ekultails.lab_openstack.undercloud
-      vars:
-        undercloud_install: true
