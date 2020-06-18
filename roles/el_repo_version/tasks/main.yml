@@ -4,20 +4,32 @@
   include_vars:
     file: "{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}.yml"
 
-- name: Disable CentOS Base repositories
+- name: Disable CentOS repositories
   ini_file:
-    dest: "{{ el_repo_version_repo_file_base }}"
-    section: "{{ item }}"
+    dest: "{{ item.file }}"
+    section: "{{ item.name }}"
     option: enabled
     value: 0
   loop: "{{ el_repo_version_repos }}"
 
-- name: Enable CentOS Vault repositories
+- name: Enable CentOS Vault repositories (CentOS 7)
   yum_repository:
-    name: "C{{ el_repo_version }}-{{ item }}"
+    name: "C{{ el_repo_version }}-{{ item.name }}"
     description: "CentOS Vault repository for {{ el_repo_version }}"
-    file: "{{ el_repo_version_repo_file_name_vault }}"
-    baseurl: "http://vault.centos.org/{{ el_repo_version }}/{{ item }}/$basearch/"
+    file: "{{ item.file }}"
+    baseurl: "http://vault.centos.org/{{ el_repo_version }}/{{ item.name }}/$basearch/"
     gpgcheck: true
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
   loop: "{{ el_repo_version_repos }}"
+  when: ansible_distribution_major_version|int == 7
+
+- name: Enable CentOS Vault repositories (CentOS 8)
+  yum_repository:
+    name: "C{{ el_repo_version }}-{{ item.name }}"
+    description: "CentOS Vault repository for {{ el_repo_version }}"
+    file: "/etc/yum.repos.d/CentOS-Vault"
+    baseurl: "http://vault.centos.org/{{ el_repo_version }}/{{ item.name }}/$basearch/os"
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+  loop: "{{ el_repo_version_repos }}"
+  when: ansible_distribution_major_version|int == 8

@@ -1,0 +1,8 @@
+---
+# centos8 vars file for el_repo_version
+el_repo_version_repos:
+  - name: BaseOS
+    file: /etc/yum.repos.d/CentOS-Base.repo
+  - name: AppStream
+    file: /etc/yum.repos.d/CentOS-AppStream.repo
+el_repo_version_repo_file_name_vault: CentOS-Vault
