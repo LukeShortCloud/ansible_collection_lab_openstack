@@ -1,0 +1,20 @@
+---
+- name: Setup OpenStack package repositories
+  hosts: undercloud,overcloud
+  roles:
+    - name: ekultails.ansible_collection_lab_openstack.rdo_packages
+      vars:
+        rdo_packages_openstack_repo: rdo
+        rdo_packages_openstack_release: master
+
+  post_tasks:
+    - name: Update all system packages
+      package:
+        name: '*'
+        state: latest
+      register: package_update
+
+    - name: Reboot all nodes
+      reboot:
+        reboot_timeout: 120
+      when: package_update.changed
