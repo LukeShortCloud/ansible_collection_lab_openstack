@@ -1,5 +1,0 @@
----
-undercloud_packages:
-  - python-tripleoclient
-  - openstack-tripleo-common
-  - openstack-tripleo-heat-templates
