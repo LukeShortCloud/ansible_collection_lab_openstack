@@ -1,0 +1,5 @@
+---
+- name: Setup the Undercloud
+  hosts: undercloud
+  roles:
+    - name: ekultails.lab_openstack.undercloud

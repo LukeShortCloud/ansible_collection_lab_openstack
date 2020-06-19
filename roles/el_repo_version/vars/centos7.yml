@@ -1,9 +1,13 @@
 ---
 # centos7 vars file for el_repo_version
-el_repo_version_repo_file_base: /etc/yum.repos.d/CentOS-Base.repo
 el_repo_version_repos:
-  - os
-  - centosplus
-  - extras
-  - updates
+  - name: base
+    dir_name: os
+    file: /etc/yum.repos.d/CentOS-Base.repo
+  - name: centosplus
+    file: /etc/yum.repos.d/CentOS-Base.repo
+  - name: extras
+    file: /etc/yum.repos.d/CentOS-Base.repo
+  - name: updates
+    file: /etc/yum.repos.d/CentOS-Base.repo
 el_repo_version_repo_file_name_vault: CentOS-Vault

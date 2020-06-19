@@ -1,5 +1,6 @@
 ---
 undercloud_install: false
+undercloud_python: python
 undercloud_upload_images: false
 undercloud_nameservers: "10.5.30.160,10.11.5.19"
 undercloud_ntp_servers: "clock.redhat.com,clock2.redhat.com"

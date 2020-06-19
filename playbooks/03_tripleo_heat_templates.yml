@@ -1,0 +1,5 @@
+---
+- hosts: undercloud
+  become_user: stack
+  roles:
+    - name: ekultails.lab_openstack.tripleo_heat_templates

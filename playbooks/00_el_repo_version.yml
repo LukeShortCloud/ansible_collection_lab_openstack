@@ -1,0 +1,4 @@
+---
+- hosts: undercloud,overcloud
+  roles:
+    - name: ekultails.lab_openstack.el_repo_version

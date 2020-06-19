@@ -1,7 +1,7 @@
 ---
 - name: Install TripleO packages
   package:
-    name: "{{ undercloud_packages }}"
+    name: "{{ undercloud_python }}-tripleoclient"
     state: present
 
 - name: Create the stack group
