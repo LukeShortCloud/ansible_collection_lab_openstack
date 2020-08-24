@@ -1,12 +1,12 @@
 ---
 resource_registry:
   OS::TripleO::DeployedServer::ControlPlanePort: /usr/share/openstack-tripleo-heat-templates/deployed-server/deployed-neutron-port.yaml
-  OS::TripleO::ControllerDeployedServer::Net::SoftwareConfig: ../templates/net-config-static-bridge.yaml
-  OS::TripleO::ComputeDeployedServer::Net::SoftwareConfig: ../templates/net-config-static-bridge.yaml
+  OS::TripleO::ControllerDeployedServer::Net::SoftwareConfig: ../templates/net-config-nic1-public-nic2-ctlplane-{{ tht_release }}.yaml
+  OS::TripleO::ComputeDeployedServer::Net::SoftwareConfig: ../templates/net-config-nic1-public-nic2-ctlplane-{{ tht_release }}.yaml
 
 parameter_defaults:
-  NeutronPublicInterface: nic2
-  HypervisorNeutronPublicInterface: nic2
+  NeutronPublicInterface: nic1
+  HypervisorNeutronPublicInterface: nic1
   ControlPlaneDefaultRoute: {{ tht_ctlplane_route }}
 {% if tht_release == "queens" %}
   EC2MetadataIp: {{ tht_ctlplane_route }}

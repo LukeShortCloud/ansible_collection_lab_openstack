@@ -44,6 +44,8 @@ None.
             address: 192.168.24.121
 ```
 
+The provided `net-config-nic1-public-nic2-ctlplane-{queens,train}.yaml` templates provide a similar layout of the Undercloud network configuration for the Overcloud. `nic1/eth0` is the public facing interface (for floating IPs) and `nic2/eth1` is the private interface (for internal Undercloud and Overcloud service communication). The default gateway is set to the Undercloud server `192.168.24.1` which should be setup with for to do masquerading/NAT.
+
 ## License
 
 Apache
