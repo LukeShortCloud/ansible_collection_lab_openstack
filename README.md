@@ -25,8 +25,8 @@ Roles are available using the namespace `ekultails.lab_openstack.<ROLE_NAME>`.
 
 ## Supported Environments
 
-* TripleO Queens, Rocky, Stein, and Train
-* RHOSP 13, 14, 15, and 16
+* TripleO Queens, Rocky, Stein, Train, and Ussuri.
+* RHOSP 13 and 16.
 
 
 ## Roles

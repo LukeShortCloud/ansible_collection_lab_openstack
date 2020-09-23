@@ -33,7 +33,7 @@
   tags:
     - repo
 
-- name: Install the OpenStack repositories from Red Hat (RHOSP < 15)
+- name: Install the OpenStack repositories from Red Hat (RHOSP 13)
   rhsm_repository:
     name: "{{ item }}"
   loop:
@@ -45,14 +45,14 @@
     - rhel-7-server-rhceph-3-tools-rpms
     - rhel-7-server-rhceph-3-mon-rpms
     - rhel-7-server-rhceph-3-osd-rpms
-    - "rhel-7-server-openstack-{{ rdo_packages_openstack_release }}-rpms"
+    - rhel-7-server-openstack-13-rpms
   when:
     - rdo_packages_openstack_repo == "rhosp"
-    - rdo_packages_openstack_release < 15
+    - rdo_packages_openstack_release == 13
   tags:
     - repo
 
-- name: Install the OpenStack repositories from Red Hat (RHOSP >= 15)
+- name: Install the OpenStack repositories from Red Hat (RHOSP 16)
   rhsm_repository:
     name: "{{ item }}"
     state: present
@@ -60,18 +60,18 @@
     - rhel-8-for-x86_64-baseos-eus-rpms
     - rhel-8-for-x86_64-appstream-rpms
     - rhel-8-for-x86_64-highavailability-eus-rpms
-    - "openstack-{{ rdo_packages_openstack_release }}-for-rhel-8-x86_64-rpms"
+    - openstack-16-for-rhel-8-x86_64-rpms
     - fast-datapath-for-rhel-8-x86_64-rpms
   when:
     - rdo_packages_openstack_repo == "rhosp"
-    - rdo_packages_openstack_release >= 15
+    - rdo_packages_openstack_release == 16
   tags:
     - repo
 
-- name: Run RHOSP 15/16 specific tasks
+- name: Run RHOSP 16 specific tasks
   when:
     - rdo_packages_openstack_repo == "rhosp"
-    - (rdo_packages_openstack_release == 15) or (rdo_packages_openstack_release == 16)
+    - rdo_packages_openstack_release == 16
   block:
     - name: Pin RHEL packages to the 8.1 release
       redhat_subscription:

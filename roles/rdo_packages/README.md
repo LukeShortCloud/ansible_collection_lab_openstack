@@ -12,7 +12,9 @@ None.
 
 ## Role Variables
 
-* rdo_packages_openstack_release (string) = The OpenStack release to setup on the Undercloud. For upstream packages, this should be the release name. For downstream packages, this should be the RHOSP version.
+* rdo_packages_openstack_release (string) = The OpenStack release to setup on the Undercloud. For upstream packages, this should be the release name. For downstream packages, this should be the major RHOSP version.
+    * Upstream (TripleO) = `queens`, `rocky`, `stein`, `train`, or `ussuri`.
+    * Downstream (RHOSP) = `13` or `16`.
 * rdo_packages_openstack_repo (string) = The OpenStack RPM repository to use: `centos`, `rdo`, or `rhosp`.
 * rdo_packages_rdo_branch (string) = The RDO branch to use: `consistent`, `current`, `current-tripleo`, or `current-triple-rdo` (default).
 * rdo_packages_centos_version (string) = For the `rdo` repo only. The major CentOS version to use.
@@ -48,7 +50,7 @@ Downstream:
     - name: rdo_packages
       vars:
         rdo_packages_openstack_repo: rhosp
-        rdo_packages_openstack_release: 14
+        rdo_packages_openstack_release: 13
         rdo_packages_rh_user: example
         # This password should be stored in a Vault encrypted file.
         rdo_packages_rh_pass: example123
