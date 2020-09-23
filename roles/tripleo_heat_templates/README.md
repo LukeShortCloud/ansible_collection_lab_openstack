@@ -4,7 +4,7 @@ An Ansible role for generating TripleO Heat templates for deployment.
 
 ## Requirements
 
-None.
+* Ansible >= 2.9
 
 ## Role Variables
 

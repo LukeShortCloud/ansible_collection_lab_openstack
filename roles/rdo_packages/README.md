@@ -4,7 +4,7 @@ A role to configure and install RDO packages for OpenStack on Red Hat distributi
 
 ## Requirements
 
-* Ansible >= 2.7
+* Ansible >= 2.9
 
 ## Dependencies
 

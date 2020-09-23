@@ -4,7 +4,7 @@ Pin CentOS to a specific minor release hosted on the CentOS Vault.
 
 ## Requirements
 
-- Ansible 2.8
+- Ansible >= 2.9
 
 ## Role Variables
 

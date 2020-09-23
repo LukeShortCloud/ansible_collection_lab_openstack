@@ -4,7 +4,7 @@ A role to configure and install the Undercloud as part of an OpenStack deploymen
 
 ## Requirements
 
-* Ansible >= 2.7
+* Ansible >= 2.9
 
 ## Dependencies
 
