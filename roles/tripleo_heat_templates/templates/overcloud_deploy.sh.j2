@@ -18,8 +18,10 @@ openstack overcloud deploy --templates ~/templates \
     --disable-validations \
 {% endif %}
 {% if tht_release == "queens" %}
+{%     if tht_config_download %}
     --config-download \
     -e ~/templates/environments/config-download-environment.yaml \
+{%     endif %}
 {% endif %}
     --overcloud-ssh-user cloud-user \
     --overcloud-ssh-key /home/stack/.ssh/id_rsa \

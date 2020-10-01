@@ -22,6 +22,7 @@ An Ansible role for generating TripleO Heat templates for deployment.
 * tht_distro (string) = The EL distribution the templates should be generated for. `centos` or `rhel`.
 * tht_swap (boolean) = If swap should be created and enabled.
 * tht_swap_size (string) = The size (in MiB) of swap to create.
+* tht_config_download (boolean) = For Queens only, if the deployment should use Ansible/config-download instead of Heat.
 
 ## Dependencies
 

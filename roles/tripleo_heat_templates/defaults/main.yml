@@ -17,3 +17,4 @@ tht_ctlplane_network_cidr: 192.168.24.0/24
 tht_distro: centos
 tht_swap: true
 tht_swap_size: 8192
+tht_config_download: true
