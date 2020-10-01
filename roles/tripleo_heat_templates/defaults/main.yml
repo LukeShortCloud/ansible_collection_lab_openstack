@@ -18,3 +18,5 @@ tht_distro: centos
 tht_swap: true
 tht_swap_size: 8192
 tht_config_download: true
+tht_ssh_user: cloud-user
+tht_ssh_key: /home/stack/.ssh/id_rsa

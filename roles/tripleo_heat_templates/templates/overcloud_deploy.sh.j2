@@ -15,6 +15,8 @@ openstack overcloud deploy --templates ~/templates \
     -e ~/templates/environments/deployed-server-bootstrap-environment-centos.yaml \
     {% endif %}
     -e ~/tht_custom/predeployed.yml \
+    --overcloud-ssh-user {{ tht_ssh_user }} \
+    --overcloud-ssh-key {{ tht_ssh_key }} \
     --disable-validations \
 {% endif %}
 {% if tht_release == "queens" %}
@@ -23,7 +25,5 @@ openstack overcloud deploy --templates ~/templates \
     -e ~/templates/environments/config-download-environment.yaml \
 {%     endif %}
 {% endif %}
-    --overcloud-ssh-user cloud-user \
-    --overcloud-ssh-key /home/stack/.ssh/id_rsa \
     -e ~/tht_custom/common.yml \
     -r ~/tht_custom/roles_data.yml 2> /dev/stdout | tee -a ~/overcloud_deploy.log-$(date +%Y-%m-%d_%H:%M:%S)

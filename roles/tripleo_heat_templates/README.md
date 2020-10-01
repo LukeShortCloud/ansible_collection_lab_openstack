@@ -23,6 +23,8 @@ An Ansible role for generating TripleO Heat templates for deployment.
 * tht_swap (boolean) = If swap should be created and enabled.
 * tht_swap_size (string) = The size (in MiB) of swap to create.
 * tht_config_download (boolean) = For Queens only, if the deployment should use Ansible/config-download instead of Heat.
+* tht_ssh_user (string) = The Overcloud SSH user to use for the initial deployment.
+* tht_ssh_key (string) = The path to the Overcloud SSH private key to use for the initial deployment.
 
 ## Dependencies
 
