@@ -16,7 +16,7 @@ None.
     * Upstream (TripleO) = `queens`, `rocky`, `stein`, `train`, or `ussuri`.
     * Downstream (RHOSP) = `13` or `16`.
 * rdo_packages_openstack_repo (string) = The OpenStack RPM repository to use: `centos`, `rdo`, or `rhosp`.
-* rdo_packages_rdo_branch (string) = The RDO branch to use: `consistent`, `current`, `current-tripleo`, or `current-triple-rdo` (default).
+* rdo_packages_rdo_branch (string) = The RDO branch to use: `consistent`, `current`, `current-tripleo`, or `current-tripleo-rdo` (default).
 * rdo_packages_centos_version (string) = For the `rdo` repo only. The major CentOS version to use.
     * < Train = Use `7`.
     * Train = Use `7` or `8` (recommended).
