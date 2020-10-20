@@ -20,7 +20,7 @@ None.
 * rdo_packages_centos_version (string) = For the `rdo` repo only. The major CentOS version to use.
     * < Train = Use `7`.
     * Train = Use `7` or `8` (recommended).
-    * > Train = Use `8`.
+    * \> Train = Use `8`.
 * rdo_packages_rh_user (string) = Username for Red Hat subscriptions.
 * rdo_packages_rh_pass (string) = Password for Red Hat subscriptions.
 * rh_user (string) = The Red Hat user for subscription-manager.
