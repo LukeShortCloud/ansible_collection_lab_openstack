@@ -11,7 +11,7 @@ Latest development:
 $ git clone https://github.com/ekultails/ansible_collection_lab_openstack.git
 $ cd ansible_collection_lab_openstack
 $ ansible-galaxy collection build --force
-$ ansible-galaxy collection install --force ekultails-ansible_collection_lab_openstack-*.tar.gz
+$ ansible-galaxy collection install --force ekultails-lab_openstack-*.tar.gz
 ```
 
 Stable release from Ansible Galaxy:
