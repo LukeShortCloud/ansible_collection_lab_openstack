@@ -2,6 +2,7 @@
 undercloud_install: false
 undercloud_python: python
 undercloud_upload_images: false
+undercloud_ironic_drivers: ipmi,redfish,ilo,idrac,manual-management
 undercloud_nameservers: "10.5.30.160,10.11.5.19"
 undercloud_ntp_servers: "clock.redhat.com,clock2.redhat.com"
 undercloud_enable_cert: false
@@ -11,7 +12,7 @@ undercloud_config:
   - section: DEFAULT
     option: enabled_hardware_types
     # By default, the other drivers listed here (besides manual-management) are enabled.
-    value: ipmi,redfish,ilo,idrac,manual-management
+    value: "{{ undercloud_ironic_drivers }}"
   - section: DEFAULT
     option: undercloud_nameservers
     value: "{{ undercloud_nameservers }}"

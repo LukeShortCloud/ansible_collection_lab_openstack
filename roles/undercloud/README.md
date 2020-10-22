@@ -15,6 +15,7 @@ None.
 * undercloud_install (boolean) = If the "openstack undercloud install" command should be executed.
 * undercloud_python (string) = `python` (Python 2) or `python3`. The Python version to use for the TripleO packages.
 * undercloud_upload_images (boolean) = If the Overcloud kernel, initramfs, and QCOW2 image should be automatically downloaded and uploaded to Glance.
+* undercloud_ironic_drivers (string) = A list of Ironic hardware drivers to enable.
 * undercloud_config (dictionary) = Custom configurations for the Undercloud.
 * undercloud_nameservers (string) = A comma-separated list of DNS resolvers.
 * undercloud_ntp_servers (string) = A comma-separated list of NTP servers.
