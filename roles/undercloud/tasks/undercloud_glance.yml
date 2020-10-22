@@ -14,11 +14,14 @@
       loop:
         - rhosp-director-images
         - rhosp-director-images-ipa
+      become: true
+      become: root
 
     - name: Extract the Overcloud images
       unarchive:
         src: "/usr/share/rhosp-director-images/{{ item }}.tar"
         dest: /home/stack/images/
+        remote_src: true
       loop:
         - "overcloud-full-latest-{{ rdo_packages_openstack_release }}.0"
         - "ironic-python-agent-latest-{{ rdo_packages_openstack_release }}.0"
@@ -44,7 +47,7 @@
         - overcloud-full.tar
 
 - name: Upload the image to Glance
-  shell: . /home/stack/stackrc && openstack overcloud image upload --image-path /home/stack/images/a
+  shell: . /home/stack/stackrc && openstack overcloud image upload --image-path /home/stack/images/
   # TODO(ekultails): Run a glance command first to see if the images even need to be uploaded.
   tags:
     - skip_ansible_lint
