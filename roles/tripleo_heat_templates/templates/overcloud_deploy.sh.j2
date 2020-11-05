@@ -7,13 +7,13 @@ openstack overcloud deploy --templates ~/templates \
     -e ~/tht_custom/enable-swap.yaml \
 {% endif %}
 {% if tht_predeployed %}
-    -e  ~/templates/environments/deployed-server-environment.yaml \
-    {% if tht_distro == 'rhel' %}
-    -e ~/templates/environments/deployed-server-bootstrap-environment-rhel.yaml \
+    -e ~/templates/environments/deployed-server-environment.yaml \
+{%     if tht_release == 'queens' %}
+    -e ~/templates/environments/deployed-server-bootstrap-environment-{{ tht_distro }}.yaml \
+{%         if tht_distro == 'rhel' %}
     -e ~/templates/environments/deployed-server-pacemaker-environment.yaml \
-    {% else %}
-    -e ~/templates/environments/deployed-server-bootstrap-environment-centos.yaml \
-    {% endif %}
+{%         endif %}
+{%     endif %}
     -e ~/tht_custom/predeployed.yml \
     --overcloud-ssh-user {{ tht_ssh_user }} \
     --overcloud-ssh-key {{ tht_ssh_key }} \
