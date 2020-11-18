@@ -3,11 +3,11 @@ parameter_defaults:
 {% if tht_release == 'victoria' %}
   NetworkConfigWithAnsible: false
 {% endif %}
-   DnsServers:
+  DnsServers:
 {% for item in tht_dns_servers %}
-     - {{ item }}
+    - {{ item }}
 {% endfor %}
-   NtpServer:
+  NtpServer:
 {% for item in tht_ntp_servers %}
-     - {{ item }}
+    - {{ item }}
 {% endfor %}
