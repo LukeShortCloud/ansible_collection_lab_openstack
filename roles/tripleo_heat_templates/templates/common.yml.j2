@@ -1,5 +1,8 @@
 ---
 parameter_defaults:
+{% if tht_release == 'victoria' %}
+  NetworkConfigWithAnsible: false
+{% endif %}
    DnsServers:
 {% for item in tht_dns_servers %}
      - {{ item }}

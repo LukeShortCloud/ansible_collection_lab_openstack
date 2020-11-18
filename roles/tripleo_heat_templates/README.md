@@ -9,7 +9,7 @@ An Ansible role for generating TripleO Heat templates for deployment.
 ## Role Variables
 
 * tht_save_dir (string) = The directory to save the templates to.
-* tht_release (string) = The OpenStack release to target. `queens` or `train`.
+* tht_release (string) = The OpenStack release to target. `queens`, `train`, or `victoria`.
 * tht_roles_data_minimal (boolean) = Generate a minimal roles_data.yml file.
 * tht_roles_data_storage (boolean) = Enable storage related roles.
 * tht_predeployed (boolean) = Generate predeployed server template.

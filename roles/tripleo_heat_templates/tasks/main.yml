@@ -29,11 +29,8 @@
 
 - name: Copy the custom net-config layout over
   copy:
-    src: "net-config-nic1-public-nic2-ctlplane-{{ item }}.yaml"
+    src: "net-config-nic1-public-nic2-ctlplane-{{ tht_release }}.yaml"
     dest: "{{ tht_save_dir }}/"
-  loop:
-    - queens
-    - train
 
 - name: Generate the Overcloud deploy script
   template:
