@@ -19,6 +19,9 @@ undercloud_config:
   - section: DEFAULT
     option: undercloud_ntp_servers
     value: "{{ undercloud_ntp_servers }}"
+  - section: DEFAULT
+    option: enable_nova
+    value: true
   - section: ctlplane-subnet
     option: masquerade
     value: "{{ undercloud_masquerade }}"
